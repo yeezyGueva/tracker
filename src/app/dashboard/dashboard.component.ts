@@ -2,8 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl';
- 
-
+import * as turf from 'turf';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +20,14 @@ export class DashboardComponent implements OnInit {
   longitude: number | null = null;
   coordinates: [number,number][] = [];
 
+  preCoordinates:any;
+  nowCoordinates:any;
+  totalDistance: number = 0;
+
+  option = {
+    enableHighAccuracy: true
+  };
+
   count: number = 0;
 
   constructor() {}
@@ -28,7 +35,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     (Mapboxgl as any).accessToken = environment.mapBoxKey;
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords.longitude +","+ position.coords.latitude);
+        console.log(position.coords.longitude +","+ position.coords.latitude)
         this.map = new Mapboxgl.Map({
           container: 'map-mapBox', //ID container
           style: 'mapbox://styles/mapbox/dark-v11', // style container
@@ -62,7 +69,7 @@ export class DashboardComponent implements OnInit {
       },
       'paint': {
         'line-color': '#6F4BDB',
-        'line-width': 8
+        'line-width': 7
       }
     });
     this.count++;
@@ -77,8 +84,21 @@ export class DashboardComponent implements OnInit {
         this.map?.setCenter([position.coords.longitude, position.coords.latitude])
         console.log(this.coordinates)
         this.createLine();
+        
+        //Calcolo della distanza percorsa
+        if (this.preCoordinates && this.nowCoordinates) {
+          const distance = turf.distance(
+            turf.point(this.preCoordinates),
+            turf.point(this.nowCoordinates)
+          );
+          this.totalDistance += distance;
+          console.log(this.totalDistance)
+        }
+        this.preCoordinates = this.nowCoordinates;
+        this.nowCoordinates = [position.coords.longitude, position.coords.latitude];
+        
         this.count ++;
-      });
+      },error=>{}, this.option);
     }, 1000);
   }
 
