@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+@font-face {
+    font-family: 'Roobert-Regular';
+    src: url('./assets/fonts/Roobert-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Adieu-Regular';
+    src: url('./assets/fonts/Adieu-Regular.ttf');
+}
+
+h1, h2, h3 {
+    font-family: 'Adieu-Regular'!important;
+    font-size: calc( (100vw - 375px)/(1440 - 375) * (76 - 40) + 40px)!important;
+    line-height: 100%;
+    margin: 0 0 20px!important;
+}
+
+body {
+    font-family: 'Roobert-Regular'!important;
+}
