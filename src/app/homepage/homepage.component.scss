@@ -1,7 +1,11 @@
+.bg-default{
+    background-color: #1C1C24!important;
+}
+
 .btn-ctm{
     margin-top: 30px;
-    color: #6F4BDB;
-    border: 1px solid #6F4BDB;
+    color: #3DB391;
+    border: 1px solid #3DB391;
     font-size: 18px;
     font-weight: bold;
     padding: 8px 25px 8px 30px;
@@ -13,6 +17,6 @@
 }
 
 .btn-ctm:hover{
-    background-color: #6F4BDB;
-    color: #212529;
+    background-color: #3DB391;
+    color: #1C1C24;
 }

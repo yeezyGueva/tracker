@@ -4,6 +4,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
+$primary-color: #1C1C24;
+$secondary-color: #3DB391;
+$thirdy-color: #2F2F3C;
+
 @font-face {
     font-family: 'Roobert-Regular';
     src: url('./assets/fonts/Roobert-Regular.ttf');
@@ -23,4 +27,16 @@ h1, h2, h3 {
 
 body {
     font-family: 'Roobert-Regular'!important;
+}
+
+//CAMBIO IL COLORE DELLA SELEZIONE DEL TESTO
+::selection {
+    color: $thirdy-color!important;
+    background-color: $secondary-color;
+}
+
+// FONT/DIMENSIONE PER I "TITOLI" DELLA DASHBOARD
+h6{
+    font-family: 'Adieu-Regular'!important;
+    font-size: 35px!important;
 }

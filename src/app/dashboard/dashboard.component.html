@@ -1,11 +1,107 @@
-<div class="container-fluid bg-danger">
+<div class="container-fluid bg-default text-light vh-100" style="overflow: hidden;">
     <div class="row">
-        <div class="col-12 col-lg-6">
-            <div id="map-mapBox" class="my-5"></div>
+        <!-- SIDEBAR -->
+        <div class="col-2 vh-100 border-sidebar p-0">
+            <app-sidebar></app-sidebar>
         </div>
-        <div class="col-12 col-lg-6">
-            <button *ngIf="!activity" class="mt-5" (click)="start()">INIZIA</button>
-            <button *ngIf="activity"  class="mt-5" (click)="finish()">TERMINA</button>
+        <div class="col-10 pt-3">
+            <!-- NAVBAR -->
+            <div class="row border-navbar">
+                <div class="col-7">
+                    <form action="#" class="input-container">
+                        <button class="search-icon"><i class="bi bi-search"></i></button>
+                        <input class="" type="text" name="search" placeholder="Inizia a cercare">
+                    </form>
+                </div>
+                <div class="col-2 d-flex align-items-center justify-content-evenly px-0">
+                    <a href="" class="btn-navbar"><img height="30px" width="30px" src="../../assets/imgs/united-kingdom.svg"></a>
+                    <a href="" class="btn-navbar d-flex align-items-center icon-btn"><i class="bi bi-life-preserver"></i></a>
+                    <a href="" class="btn-navbar d-flex align-items-center icon-btn"><i class="bi bi-plus-lg"></i></a>
+                </div>
+                <div class="col-3 d-flex align-items-center justify-content-center px-4 fw-bold">
+                    <button *ngIf="!activity" class="btn-toogle" (click)="start()">Start tracking</button>
+                    <button *ngIf="activity"  class="btn-toogle" (click)="finish()">Finish racking</button>
+                </div>
+            </div>
+            <div class="row vh-100">
+                <!-- PRINCIPAL CONTENT -->
+                <div class="col-8 px-4">
+                    <h6 class="mt-3">Map</h6>
+                    <div id="map-mapBox" class="mt-3 mb-4 mx-auto"></div>
+                    <h6>History</h6>
+                    <table class="mt-1" [ngClass]="{'small-screen': smallHeight, 'large-screen': !smallHeight}" style="color:white">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Breed</th>
+                                <th>Time</th>
+                                <th>Distance</th>
+                                <th>N° Walking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jack Russel</td>
+                                <td>Milano</td>
+                                <td>12:20</td>
+                                <td>1.2km</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Jack Russel</td>
+                                <td>Milano</td>
+                                <td>12:20</td>
+                                <td>1.2km</td>
+                                <td>13</td>
+                            </tr>
+                            <tr>
+                                <td>Prova</td>
+                                <td>Milano</td>
+                                <td>12:20</td>
+                                <td>1.2km</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- RIGHT CONTENT -->
+                <div class="col-4 px-4 content-right-border">
+                    <h6 class="mt-3">Pancino</h6>
+                    <img src="../../assets/imgs/Jack-Russell-Terrier.png" class="img-fluid d-block mx-auto mb-2" height="450" width="450">
+                    <!-- SCHEDA PROPRIETARIO -->
+                    <div class="row">
+                        <div class="col-8 px-0 d-flex align-items-start">
+                            <span class="d-flex align-items-center justify-content-center icon-info-btn mx-3"><i class="bi bi-person-fill"></i></span>
+                            <div class="pl-2">
+                                <span style="font-size: 14px; color: #2f2f3c">Proprietario</span> <br>
+                                <span style="font-size: 18px;">Davide Guevara</span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-end pe-3">
+                            <!-- BOTTONE TELEFONO -->
+                            <div ngbDropdown placement="top-end" class="d-inline-block me-2">
+                                <button id="dropUpPhone" type="button" class="btn-navbar d-flex align-items-center icon-btn" ngbDropdownToggle><i class="bi bi-telephone"></i></button>
+                                <div class="text-center span-info-phone" ngbDropdownMenu aria-labelledby="dropUpPhone">
+                                    <span>+39 345 141 7790</span>
+                                </div>
+                            </div>
+
+                            <!-- BOTTONE MAIL -->
+                            <div ngbDropdown placement="top-end" class="d-inline-block">
+                                <button id="dropUpPhone" type="button" class="btn-navbar d-flex align-items-center icon-btn" ngbDropdownToggle><i class="bi bi-envelope"></i></button>
+                                <div class="text-center span-info-mail" ngbDropdownMenu aria-labelledby="dropUpPhone">
+                                    <span class="px-3">davidejguevara@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <h6 class="mt-3">Analysis</h6>
+                        <app-generic-analysis></app-generic-analysis>
+                </div>
+            </div>       
         </div>
     </div>
+    
 </div>
+
